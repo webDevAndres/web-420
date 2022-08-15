@@ -1,2 +1,4 @@
-# web-420
-Bellevue university
+# WEB 420 RESTFul APIs
+## Contributors
+* Richard Krasso
+* Andres Macias
