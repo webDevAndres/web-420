@@ -1,0 +1,6 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>13</zoom_level><element><id>Text</id><coordinates><x>182</x><y>131</y><w>1105</w><h>377</h></coordinates><panel_attributes>Using what you have learned from this week's reading assignment and figures 2.9 and 2.12, create a "flowchart" for the Composer API.
+
+The Composer API must support three operations: add a new composer, view a list of famous composers, and view a composer by their id.
+
+In your flowchart, identify the "whats, hows, their input and outputs, and anticipated goals." For inspiration, using figure 2.12 as a guide.
+Name the operations as: findAllComposers, findComposerById, and createComposer.</panel_attributes><additional_attributes></additional_attributes></element></diagram>

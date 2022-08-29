@@ -1,0 +1,61 @@
+# Title: macias-composers.yaml
+# Author: Andres Macias
+# Date: August 28 2022
+# Description: Assignment 3.2 - Describing the Composer API
+openapi: 3.0.0
+info:
+  title: Composer API
+  version: "1.0"
+paths:
+  /composers:
+    get:
+      summary: returns a list of all composers
+      description: API for returning a list of compoers from MongoDB Atlas
+      operationId: findAllComposers
+      responses:
+        '200':
+          description: Composer documents
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+    post:
+      summary: Creates a new composer object
+      description: API for adding new composer objects
+      operationId: createComposer
+      requestBody:
+        description: Composers information
+        content:
+          application/json:
+            schema:
+              properties:
+                  firstname:
+                    type: string
+                  lastname:
+                    type: string
+      responses:
+        '200':
+          description: User added
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+  /composers/{id}:
+    get:
+      summary: returns a composer object
+      description: API for returniong a single composer object from MongoDB
+      operationId: findComposerById
+      parameters:
+        - name: id
+          description: The composer requested by the user
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Composer document in JSON format
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
