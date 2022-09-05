@@ -8,8 +8,9 @@
 */
 
 let express = require('express');
-let Composer = require('../models/macias-composer');
 let router = express.Router();
+let Composer = require('../models/macias-composer');
+
 
 
 router.get('/api/composers', async (req, res) => {
@@ -36,9 +37,9 @@ router.get('/api/composers', async (req, res) => {
     };
 });
 
-router.get('/api/composers/:id', async (req, res) => {
+router.get('/composers/:id', async (req, res) => {
     try {
-        Composer.findOne({'_id': req.params.id}, function (err, composer) {
+        Composer.findOne({'_id': req.params.id }, function (err, composer) {
             if (err) {
                 console.log(err);
                 res.status(501).send({
@@ -60,13 +61,14 @@ router.get('/api/composers/:id', async (req, res) => {
     };
 });
 
-router.post('/api/composers/:id', async (req, res) => {
+router.post('/composers', function (req, res) {
     try {
         let newComposer = {
             firstName: req.body.firstName,
-            lastName: req.body.lastName
+            lastName: req.body.lastName,
         }
-      await Composer.create(newComposer, function (err, composer) {
+
+        Composer.create(newComposer, function (err, composer) {
             if (err) {
                 console.log(err);
                 res.status(501).send({
@@ -77,6 +79,7 @@ router.post('/api/composers/:id', async (req, res) => {
                 res.status(200).send({
                     'message': `Composer document`
                 });
+                console.log(composer);
                 res.json(composer);
             }
         });
@@ -88,3 +91,4 @@ router.post('/api/composers/:id', async (req, res) => {
     };
 });
 
+module.exports = router;
