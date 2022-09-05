@@ -2,6 +2,8 @@
 # Author: Andres Macias
 # Date: August 28 2022
 # Description: Assignment 3.2 - Describing the Composer API
+
+
 openapi: 3.0.0
 info:
   title: Composer API
