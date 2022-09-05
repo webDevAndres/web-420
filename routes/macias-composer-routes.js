@@ -18,7 +18,7 @@ let Composer = require('../models/macias-composer');
 //   /composers:
 //     get:
 //       summary: returns a list of all composers
-//       description: API for returning a list of compoers from MongoDB Atlas
+//       description: API for returning a list of composers from MongoDB Atlas
 //       operationId: findAllComposers
 //       responses:
 //         '200':
