@@ -1,3 +1,13 @@
+/*
+============================================
+ Title: macias-composer.js
+ Author: Andres Macias
+ Date:   9/4/22
+ Description: contains schema for composer
+===========================================
+*/
+
+
 let express = require("express");
 let http = require("http");
 let swaggerUi = require("swagger-ui-express");
