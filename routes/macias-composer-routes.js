@@ -11,22 +11,22 @@ let express = require('express');
 let router = express.Router();
 let Composer = require('../models/macias-composer');
 
-//findAllComposers
-// openapi: 3.0.0
-//@openapi
-// paths:
-//   /composers:
-//     get:
-//       summary: returns a list of all composers
-//       description: API for returning a list of composers from MongoDB Atlas
-//       operationId: findAllComposers
-//       responses:
-//         '200':
-//           description: Array of composer documents
-//         '500':
-//           description: Server Exception
-//         '501':
-//           description: MongoDB Exception
+/**
+* openapi: 3.0.0
+* @openapi
+*   /api/composers:
+*     get:
+*       summary: returns a list of all composers
+*       description: API for returning a list of composers from MongoDB Atlas
+*       operationId: findAllComposers
+*       responses:
+*         '200':
+*           description: Array of composer documents
+*         '500':
+*           description: Server Exception
+*         '501':
+*           description: MongoDB Exception
+*/
 router.get('/composers', async (req, res) => {
     try {
         Composer.find({}, function (err, composers) {
@@ -48,28 +48,29 @@ router.get('/composers', async (req, res) => {
     };
 });
 
-//findComposerById
-// openapi: 3.0.0
-//@openapi
-// /composers/{id}:
-//     get:
-//       summary: returns a composer object
-//       description: API for returning a single composer object from MongoDB
-//       operationId: findComposerById
-//       parameters:
-//         - name: id
-//           description: The composer requested by the user
-//           in: path
-//           schema:
-//             type: string
-//           required: true
-//       responses:
-//         '200':
-//           description: Composer document
-//         '500':
-//           description: Server Exception
-//         '501':
-//           description: MongoDB Exception
+
+/**
+* @openapi
+* /api/composers/{id}:
+*     get:
+*       summary: returns a composer object
+*       description: API for returning a single composer object from MongoDB
+*       operationId: findComposerById
+*       parameters:
+*         - name: id
+*           description: The composer requested by the user
+*           in: path
+*           schema:
+*             type: string
+*           required: true
+*       responses:
+*         '200':
+*           description: Composer document
+*         '500':
+*           description: Server Exception
+*         '501':
+*           description: MongoDB Exception
+*/
 router.get('/composers/:id', async (req, res) => {
     try {
         Composer.findOne({'_id': req.params.id }, function (err, composer) {
@@ -94,42 +95,42 @@ router.get('/composers/:id', async (req, res) => {
     };
 });
 
-//createComposer
-// openapi: 3.0.0
-// @openapi
-// post:
-// summary: Creates a new composer object
-// description: API for adding new composer objects
-// operationId: createComposer
-// requestBody:
-//   description: Composers information
-//   content:
-//     application/json:
-//       schema:
-//          required:
-//              - firstName,
-//              - lastName
-//         properties:
-//             firstName:
-//               type: string
-//             lastName:
-//               type: string
-// responses:
-//   '200':
-//     description: composer added
-//   '500':
-//     description: Server Exception
-//   '501':
-//     description: MongoDB Exception
+/**
+* @openapi
+* /api/composers:
+*   post:
+*       summary: Creates a new person object
+*       Description: Api for adding person object
+*       requestBody:
+*               description: Persons information
+*               content:
+*                   application/json:
+*                       schema:
+*                           required:
+*                               - firstName
+*                               - lastName
+*                           properties:
+*                               firstName:
+*                                   type: string
+*                               lastName:
+*                                   type: string
+*       responses:
+*           '200':
+*               description: composer added
+*           '500':
+*               description: Server Exception
+*           '501':
+*               description: MongoDB Exception
+*/
 
-router.post('/composers', function (req, res) {
+router.post('/composers', async (req, res) => {
     try {
         let newComposer = {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName
+                firstName: "Gary",
+                lastName: "Smith"
             };
 
-        Composer.create(newComposer, function (err, composer) {
+       await Composer.create(newComposer, function (err, composer) {
             if (err) {
                 console.log(err);
                 res.status(501).send({

@@ -91,7 +91,7 @@ router.get('/persons', async (req, res) => {
 *                                   type: string
 *       responses:
 *           '200':
-*               description: composer added
+*               description: person added
 *           '500':
 *               description: Server Exception
 *           '501':
