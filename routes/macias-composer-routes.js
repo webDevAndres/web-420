@@ -27,7 +27,7 @@ let Composer = require('../models/macias-composer');
 //           description: Server Exception
 //         '501':
 //           description: MongoDB Exception
-router.get('/api/composers', async (req, res) => {
+router.get('/composers', async (req, res) => {
     try {
         Composer.find({}, function (err, composers) {
             if (err) {
@@ -37,9 +37,6 @@ router.get('/api/composers', async (req, res) => {
                 });
             } else {
                 console.log(composers);
-                res.status(200).send({
-                    'message': `Array of composer documents`
-                });
                 res.json(composers);
             };
         });
@@ -109,6 +106,9 @@ router.get('/composers/:id', async (req, res) => {
 //   content:
 //     application/json:
 //       schema:
+//          required:
+//              - firstName,
+//              - lastName
 //         properties:
 //             firstName:
 //               type: string
@@ -125,9 +125,9 @@ router.get('/composers/:id', async (req, res) => {
 router.post('/composers', function (req, res) {
     try {
         let newComposer = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-        }
+                firstName: req.body.firstName,
+                lastName: req.body.lastName
+            };
 
         Composer.create(newComposer, function (err, composer) {
             if (err) {
@@ -136,10 +136,6 @@ router.post('/composers', function (req, res) {
                     'message': `MongoDB Exception: ${err}`
                 });
             } else {
-                console.log(composer);
-                res.status(200).send({
-                    'message': `composer added`
-                });
                 console.log(composer);
                 res.json(composer);
             }
@@ -153,3 +149,4 @@ router.post('/composers', function (req, res) {
 });
 
 module.exports = router;
+
