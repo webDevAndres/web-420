@@ -1,6 +1,6 @@
 /*
 ============================================
- Title: macias-composer-routes.js
+ Title: macias-session-routes.js
  Author: Andres Macias
  Date:   9/18/22
  Description: session API - routes for user

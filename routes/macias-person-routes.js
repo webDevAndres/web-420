@@ -1,9 +1,9 @@
 /*
 ============================================
- Title: macias-composer-routes.js
+ Title: macias-person-routes.js
  Author: Andres Macias
- Date:   9/4/22
- Description: composer API - routes for composer
+ Date:   9/11/22
+ Description: person API - routes for person
 ===========================================
 */
 

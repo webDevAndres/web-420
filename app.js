@@ -15,7 +15,8 @@ let swaggerJsdoc = require("swagger-jsdoc");
 let mongoose = require("mongoose");
 // let composerAPI = require("./routes/macias-composer-routes");
 // let personAPI = require("./routes/macias-person-routes");
-let userAPI = require("./routes/macias-session-routes");
+// let userAPI = require("./routes/macias-session-routes");
+let customerAPI = require("./routes/macias-node-shopper-routes");
 let app = express();
 let bodyParser = require("body-parser");
 
@@ -53,7 +54,8 @@ let openapiSpecification = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 // app.use('/api', composerAPI);
 // app.use('/api', personAPI);
-app.use('/api', userAPI);
+// app.use('/api', userAPI);
+ app.use('/api', customerAPI)
 
 
 http.createServer(console.log("Application started and listening to port 3000"), app).listen(process.env.PORT || 3000);
