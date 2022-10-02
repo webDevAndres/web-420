@@ -158,10 +158,10 @@ router.post('/composers', async (req, res) => {
 *       parameters:
 *         - name: id
 *           in: path
-*           description: The composer requested by the user
+*           description: Id to filter the collection by
 *           required: true
 *           schema:
-*             type: string
+*               type: string
 *       requestBody:
 *           description: composer information
 *           content:
@@ -187,7 +187,6 @@ router.post('/composers', async (req, res) => {
 router.put('/composers/:id', async (req, res) => {
     try {
         const composerId = req.params.id;
-
         Composer.findOne({ '_id': composerId }, function (err, composer) {
             if (err) {
                 console.log(err);
@@ -195,7 +194,6 @@ router.put('/composers/:id', async (req, res) => {
                     'message': `MongoDB Exception: ${err}`
                 });
             } else {
-                console.log(req.body);
                 if (composer) {
                     composer.set({
                         firstName: req.body.firstName,
@@ -278,4 +276,3 @@ router.delete('/composers/:id', async (req, res) => {
 
 
 module.exports = router;
-
