@@ -205,7 +205,7 @@ router.delete('/teams/:id', async (req, res) => {
             } else {
                 console.log(composer);
                 res.status(200).send({
-                    'message': `Composer ${req.params.id} has been removed`
+                    'message': `Team ${req.params.id} has been removed`
                 });
             }
         });
