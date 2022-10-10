@@ -48,7 +48,7 @@ const options = {
             version: '1.0.0',
         },
     },
-    apis: ['./routes/macias-team.js']
+    apis: ['./routes/macias-team-routes.js']
 };
 
 let openapiSpecification = swaggerJsdoc(options);
