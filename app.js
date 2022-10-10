@@ -53,7 +53,7 @@ const options = {
 
 let openapiSpecification = swaggerJsdoc(options);
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api', teamAPI);
 // app.use('/api', composerAPI);
 // app.use('/api', personAPI);
